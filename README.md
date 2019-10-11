@@ -58,7 +58,7 @@ INSERT INTO `sys_codes` VALUES ('85ca863b-7f2b-4d0b-972d-664482af2d64', null, 'V
 INSERT INTO `sys_codes` VALUES ('8ea2fde6-a78a-42e3-a028-a668cd35ae8a', null, 'VEH_SERIES_MAPPING', 'JH476', 'JH476', '重卡', null, '0', '3', null, null, null);
 INSERT INTO `sys_codes` VALUES ('90c7af60-872b-4686-b6cb-239dd63eb0d1', null, 'VEH_SERIES_MAPPING', '310MCA', '310MCA', '310MCA', null, '0', '11', null, null, null);
 INSERT INTO `sys_codes` VALUES ('9f99ea70-657d-4cba-81e6-41fe46f921b0', null, 'AREA', '010', 'bj', '北京', null, '0', '3', null, null, null);
-INSERT INTO `sys_codes` VALUES ('a130c72c-b1aa-4cd1-be05-41178236efc5', null, 'SYS_PROP', 'indexPageUrl', 'http://172.20.38.96:9300', '首页地址', null, '0', '5', null, null, null);
+INSERT INTO `sys_codes` VALUES ('a130c72c-b1aa-4cd1-be05-41178236efc5', null, 'SYS_PROP', 'indexPageUrl', 'http://ip:port', '首页地址', null, '0', '5', null, null, null);
 INSERT INTO `sys_codes` VALUES ('a90f8262-5ebb-4729-9f35-ae41ef64d21d', '258c5616-7e4c-4d0a-8bd8-a81338c17524', 'AREA', '028_2', 'cd_qy', '青羊区', null, '0', '2', null, null, null);
 INSERT INTO `sys_codes` VALUES ('aee37155-ba0b-42a8-b957-ef8ebb7fe5f9', null, 'VEH_SERIES_MAPPING', 'N352_PK', 'N352_PK', '皮卡', null, '0', '8', null, null, null);
 INSERT INTO `sys_codes` VALUES ('afa6d9a3-8a8d-4552-a001-e48be914fa59', null, 'DTC_TOTAL_SCORE', 'POC-EV.dtc.total.score.level1', '327', '1', null, '0', '1', '一级故障', null, '10');
@@ -68,7 +68,7 @@ INSERT INTO `sys_codes` VALUES ('ba15204b-59da-446c-baa7-828fe28d61e1', null, 'I
 INSERT INTO `sys_codes` VALUES ('ba1ef2b5-1d7d-4caf-b8a0-d04fafff2868', null, 'AREA', '021', 'sh', '上海', null, '0', '2', '', null, '');
 INSERT INTO `sys_codes` VALUES ('bb87ad2e-13f9-47dc-a714-ccf119930cd5', 'ba1ef2b5-1d7d-4caf-b8a0-d04fafff2868', 'AREA', '021_1', 'sh_xh', '徐汇区', null, '0', '1', null, null, null);
 INSERT INTO `sys_codes` VALUES ('bc544650-3a37-424a-bd16-1381d0847959', '9f99ea70-657d-4cba-81e6-41fe46f921b0', 'AREA', '010_1', 'bj_cy', '朝阳区', null, '0', '1', null, null, null);
-INSERT INTO `sys_codes` VALUES ('c2f99808-997a-4f41-bf96-287812d30d3f', null, 'SYS_PROP', 'orgName', '钛马网络信息有限公司', '组织名称', null, '0', '3', null, null, null);
+INSERT INTO `sys_codes` VALUES ('c2f99808-997a-4f41-bf96-287812d30d3f', null, 'SYS_PROP', 'orgName', 'X公司', '组织名称', null, '0', '3', null, null, null);
 INSERT INTO `sys_codes` VALUES ('c51864f4-07b3-44a9-8956-d6155576e49a', null, 'VEH_SERIES_MAPPING', 'V348', 'V348', 'V348', null, '0', '13', null, null, null);
 INSERT INTO `sys_codes` VALUES ('c5e04bd8-3297-48a1-adc2-a03a46fc7a93', null, 'VEH_SERIES_MAPPING', 'N352_PK_CLASSIC', 'N352_PK_CLASSIC', '经典域虎', null, '0', '2', '代码表示从车厂同步过来的车系代码,码值表示在联车平台的车型代码', null, null);
 INSERT INTO `sys_codes` VALUES ('ca237178-ee0e-4098-8685-9e3752e1c18b', null, 'DTC_TOTAL_SCORE', 'POC-CV.dtc.total.score.level2', '121', '2', null, '0', '2', '二级故障', null, '5');
@@ -110,7 +110,7 @@ INSERT INTO `sys_codes` VALUES ('e40a4daa-1ca1-4b2c-bba7-174e82GPS003', null, 'V
 INSERT INTO `sys_codes` VALUES ('e40a4daa-1ca1-4b2c-bba7-174e82GPS004', null, 'VEH_STATUS_ALIAS', 'GPS004', 'altitudeMeters', '高度', null, '0', '1', null, null, null);
 INSERT INTO `sys_codes` VALUES ('e40a4daa-1ca1-4b2c-bba7-174e82GPS005', null, 'VEH_STATUS_ALIAS', 'GPS005', 'speed', 'GPS车速', null, '0', '1', null, null, null);
 INSERT INTO `sys_codes` VALUES ('e40a4daa-1ca1-4b2c-bba7-174e82GPS006', null, 'VEH_STATUS_ALIAS', 'GPS006', 'heading', '方向', null, '0', '1', null, null, null);
-INSERT INTO `sys_codes` VALUES ('ec14bbaa-500d-4cb1-bcb0-d77d7fcb9cb1', null, 'VG_DOWNLOAD_URL', '.*/+(.*)', 'ftp://172.20.66.7/$1?username=guest&password=JSNBb7PQWFW0Rryze0t', '替换', null, '1', '3', null, null, null);
+INSERT INTO `sys_codes` VALUES ('ec14bbaa-500d-4cb1-bcb0-d77d7fcb9cb1', null, 'VG_DOWNLOAD_URL', '.*/+(.*)', 'ftp://ip/$1?username=guest&password=xxx', '替换', null, '1', '3', null, null, null);
 INSERT INTO `sys_codes` VALUES ('f2a9f00e-263c-4ca4-b344-32cee099f884', null, 'DTC_TOTAL_SCORE', 'POC-EV.dtc.total.score.level2', '121', '2', null, '0', '2', '二级故障', null, '5');
 INSERT INTO `sys_codes` VALUES ('f2efa042-9951-4c8d-b0b7-a79583c0ebad', null, 'VEH_SERIES_MAPPING', 'N331', 'N331', '轻卡', null, '0', '4', null, null, null);
 INSERT INTO `sys_codes` VALUES ('f4becc74-78b1-4c33-8712-dba5d13962a3', null, 'VEH_SERIES_MAPPING', 'N725', 'N725', 'N725', null, '0', '21', null, null, null);
