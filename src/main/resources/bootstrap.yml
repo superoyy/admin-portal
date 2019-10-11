@@ -3,7 +3,7 @@ info:
 
 spring:
   application:
-    name: iov-console-web
+    name: admin-portal
   http:
     encoding:
       charset: UTF-8
@@ -18,25 +18,3 @@ spring:
     cache-period: 0
   template:
     cache: false
-  cloud:
-    config:
-      username: tima
-      password: FRkjGiRMqem79GHE
-      discovery:
-        enabled: true
-        serviceId: CONFIG-SERVER
-      profile: tpc-poc
-      label: develop
-
-eureka:
-  client:
-    registerWithEureka: false
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://172.20.38.96:8761/eureka/
-  instance:
-    leaseRenewalIntervalInSeconds: 10
-    statusPageUrlPath: ${management.context-path}/info
-    healthCheckUrlPath: ${management.context-path}/health
-    metadataMap:
-      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}

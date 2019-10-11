@@ -1,7 +1,7 @@
-package com.dukla.portal.admin.web.handler;
+package com.dukla.portal.admin.handler;
 
-import com.timanetworks.iov.domain.SysLogin;
-import com.timanetworks.iov.domain.SysRole;
+import com.dukla.base.domain.SysLogin;
+import com.dukla.base.domain.SysRole;
 import com.dukla.web.pojo.ModuleTreeVo;
 import com.dukla.web.pojo.ModuleVo;
 import com.dukla.web.pojo.UserModuleListVo;

@@ -1,9 +1,9 @@
-package com.dukla.portal.admin.web.pojo;
+package com.dukla.web.pojo;
 
 
-import com.timanetworks.iov.domain.SysLogin;
-import com.timanetworks.iov.domain.SysModuleFunction;
-import com.timanetworks.iov.domain.SysRole;
+import com.dukla.base.domain.SysLogin;
+import com.dukla.base.domain.SysModuleFunction;
+import com.dukla.base.domain.SysRole;
 
 import java.io.Serializable;
 import java.util.List;

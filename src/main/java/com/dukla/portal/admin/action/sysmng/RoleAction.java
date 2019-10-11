@@ -1,4 +1,4 @@
-package com.dukla.portal.admin.web.action.sysmng;
+package com.dukla.portal.admin.action.sysmng;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,11 +8,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.timanetworks.iov.core.jpa.dao.QueryParam;
-import com.timanetworks.iov.domain.*;
-import com.timanetworks.iov.util.Kit;
+import com.dukla.base.domain.*;
+import com.dukla.base.jpa.dao.QueryParam;
+import com.dukla.base.util.Kit;
 import com.dukla.web.base.GenericAction;
-import com.dukla.portal.admin.web.handler.UserHandler;
+import com.dukla.portal.admin.handler.UserHandler;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 

@@ -1,6 +1,6 @@
-package com.dukla.portal.admin.web.base;
+package com.dukla.web.base;
 
-import com.dukla.portal.admin.web.pojo.UserModuleTreeVo;
+import com.dukla.web.pojo.UserModuleTreeVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.method.HandlerMethod;

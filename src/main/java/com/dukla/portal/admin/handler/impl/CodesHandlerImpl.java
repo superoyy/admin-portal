@@ -1,11 +1,11 @@
-package com.dukla.portal.admin.web.handler.impl;
+package com.dukla.portal.admin.handler.impl;
 
-import com.timanetworks.iov.core.jpa.dao.QueryParam;
-import com.timanetworks.iov.core.sql.excecutor.SqlExecutor;
-import com.timanetworks.iov.dao.SysCodesDao;
-import com.timanetworks.iov.domain.SysCodes;
-import com.timanetworks.iov.util.Kit;
-import com.dukla.portal.admin.web.handler.CodesHandler;
+import com.dukla.base.dao.SysCodesDao;
+import com.dukla.base.domain.SysCodes;
+import com.dukla.base.jpa.dao.QueryParam;
+import com.dukla.base.sql.excecutor.SqlExecutor;
+import com.dukla.base.util.Kit;
+import com.dukla.portal.admin.handler.CodesHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

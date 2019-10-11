@@ -1,11 +1,11 @@
-package com.dukla.portal.admin.web.action.sysmng;
+package com.dukla.portal.admin.action.sysmng;
 
-import com.timanetworks.iov.core.jpa.dao.QueryParam;
-import com.timanetworks.iov.domain.SysCodes;
-import com.timanetworks.iov.util.Kit;
+import com.dukla.base.domain.SysCodes;
+import com.dukla.base.jpa.dao.QueryParam;
+import com.dukla.base.util.Kit;
 import com.dukla.web.base.CoreConstant;
 import com.dukla.web.base.GenericAction;
-import com.dukla.portal.admin.web.handler.CodesHandler;
+import com.dukla.portal.admin.handler.CodesHandler;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

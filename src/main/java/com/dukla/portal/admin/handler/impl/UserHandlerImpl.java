@@ -1,11 +1,11 @@
-package com.dukla.portal.admin.web.handler.impl;
+package com.dukla.portal.admin.handler.impl;
 
-import com.timanetworks.iov.core.jpa.dao.QueryParam;
-import com.timanetworks.iov.core.sql.excecutor.SqlExecutor;
-import com.timanetworks.iov.dao.*;
-import com.timanetworks.iov.domain.*;
-import com.timanetworks.iov.util.Kit;
-import com.dukla.portal.admin.web.handler.UserHandler;
+import com.dukla.base.dao.*;
+import com.dukla.base.domain.*;
+import com.dukla.base.jpa.dao.QueryParam;
+import com.dukla.base.sql.excecutor.SqlExecutor;
+import com.dukla.base.util.Kit;
+import com.dukla.portal.admin.handler.UserHandler;
 import com.dukla.web.pojo.ModuleTreeVo;
 import com.dukla.web.pojo.ModuleVo;
 import com.dukla.web.pojo.UserModuleListVo;

@@ -1,4 +1,4 @@
-package com.dukla.portal.admin.web.base;
+package com.dukla.web.base;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

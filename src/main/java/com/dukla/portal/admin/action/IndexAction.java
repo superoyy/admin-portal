@@ -1,4 +1,4 @@
-package com.dukla.portal.admin.web.action;
+package com.dukla.portal.admin.action;
 
 import com.dukla.web.base.CoreConstant;
 import com.dukla.web.base.GenericAction;
@@ -23,10 +23,10 @@ public class IndexAction extends GenericAction {
         return isLogin(session) ? "/framework/main" : "/framework/login";
     }
 
-//    @RequestMapping(method = RequestMethod.GET,path = "/error")
-//    public String toError(){
-//        return "/framework/error";
-//    }
+    @RequestMapping(method = RequestMethod.GET,path = "/error")
+    public String toError(){
+        return "/framework/error";
+    }
 
 
     @RequestMapping(method = RequestMethod.GET,path = "/framework/toLogin")
@@ -34,10 +34,6 @@ public class IndexAction extends GenericAction {
         return "/framework/login";
     }
 
-    @RequestMapping(method = RequestMethod.GET,path = "/iov/toIndex")
-    public String toIovIndex(){
-        return "/iov/index_stat";
-    }
 
 
 }

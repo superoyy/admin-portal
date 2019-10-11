@@ -1,4 +1,4 @@
-package com.dukla.portal.admin.web.action.sysmng;
+package com.dukla.portal.admin.action.sysmng;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,10 +7,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.timanetworks.iov.domain.*;
+import com.dukla.base.domain.*;
 import com.dukla.web.base.GenericAction;
-import com.dukla.portal.admin.web.handler.ModuleHandler;
-import com.dukla.portal.admin.web.handler.UserHandler;
+import com.dukla.portal.admin.handler.ModuleHandler;
+import com.dukla.portal.admin.handler.UserHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

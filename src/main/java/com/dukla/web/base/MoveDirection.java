@@ -1,4 +1,4 @@
-package com.dukla.portal.admin.web.base;
+package com.dukla.web.base;
 
 /**
  * 记录序号移动方向

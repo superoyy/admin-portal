@@ -1,6 +1,6 @@
-package com.dukla.portal.admin.web.base;
+package com.dukla.web.base;
 
-import com.timanetworks.iov.util.Kit;
+import com.dukla.base.util.Kit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -40,7 +40,7 @@ public class CoreConstant implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        logger.info("系统关闭,"+Kit.formatDateTime(new Date(),"yyyy.MM.dd HH:mm:ss"));
+        logger.info("系统关闭,"+ Kit.formatDateTime(new Date(),"yyyy.MM.dd HH:mm:ss"));
     }
 
 

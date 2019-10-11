@@ -1,4 +1,4 @@
-package com.dukla.portal.admin.web.base;
+package com.dukla.web.base;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

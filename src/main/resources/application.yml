@@ -1,5 +1,5 @@
 server:
-  port: 9301
+  port: 8080
 
 management:
   context-path: /admin
@@ -8,4 +8,4 @@ management:
 
 logging:
    level:
-     com.timanetworks: debug
+     com.dukla: debug

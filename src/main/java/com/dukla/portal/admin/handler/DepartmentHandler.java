@@ -1,6 +1,6 @@
-package com.dukla.portal.admin.web.handler;
+package com.dukla.portal.admin.handler;
 
-import com.timanetworks.iov.domain.SysDept;
+import com.dukla.base.domain.SysDept;
 
 /**
  * Created by dukla on 10/26/16.

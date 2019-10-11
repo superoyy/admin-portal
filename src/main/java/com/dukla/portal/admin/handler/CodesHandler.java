@@ -1,6 +1,6 @@
-package com.dukla.portal.admin.web.handler;
+package com.dukla.portal.admin.handler;
 
-import com.timanetworks.iov.domain.SysCodes;
+import com.dukla.base.domain.SysCodes;
 
 import java.util.List;
 

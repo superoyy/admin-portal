@@ -1,10 +1,10 @@
-package com.dukla.portal.admin.web.base;
+package com.dukla.web.base;
 
+import com.dukla.base.jpa.handler.HibernateHandler;
+import com.dukla.base.mongodb.handler.MongodbHandler;
+import com.dukla.base.sql.handler.SqlHandler;
+import com.dukla.base.util.Kit;
 import com.mongodb.gridfs.GridFSFile;
-import com.timanetworks.iov.core.jpa.handler.HibernateHandler;
-import com.timanetworks.iov.core.mongodb.handler.MongodbHandler;
-import com.timanetworks.iov.core.sql.handler.SqlHandler;
-import com.timanetworks.iov.util.Kit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -70,7 +70,7 @@ public abstract class GenericAction {
         Map<String,Object> meta=new HashMap<String,Object>();
         meta.put("orgName",orgName);
         meta.put("ext",ext);
-        return this.mongodbHandler.saveFile(file.getInputStream(),Kit.getRandomFileName()+ext,getContentType(ext),meta);
+        return this.mongodbHandler.saveFile(file.getInputStream(), Kit.getRandomFileName()+ext,getContentType(ext),meta);
     }
 
     private String getContentType(String ext){

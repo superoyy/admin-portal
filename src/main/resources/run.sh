@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-# Description:
-#       Timanetworks Spring Cloud Boot Scripts.
-#   @Date:    2017-11-23
-#   @Version: 1.0
-# History:
-# 2017-12-13, modify scripts, such as log file,remove lib/bin etc..
-# 2018-01-31, modify scripts, move check enviroment variable position, from 'init_env' to 'init_script'.
 # Get base path
 BASEDIR=$(cd $(dirname $0); pwd -P)
 SCRIPTNAME=$(basename $0)

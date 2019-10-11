@@ -1,7 +1,7 @@
-package com.dukla.portal.admin.web.handler;
+package com.dukla.portal.admin.handler;
 
-import com.timanetworks.iov.domain.SysModule;
-import com.timanetworks.iov.domain.SysModuleFunction;
+import com.dukla.base.domain.SysModule;
+import com.dukla.base.domain.SysModuleFunction;
 
 /**
  * Created by dukla on 10/26/16.

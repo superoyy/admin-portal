@@ -1,11 +1,11 @@
-package com.dukla.portal.admin.web.action.sysmng;
+package com.dukla.portal.admin.action.sysmng;
 
-import com.timanetworks.iov.domain.SysLogin;
-import com.timanetworks.iov.util.Kit;
+import com.dukla.base.domain.SysLogin;
+import com.dukla.base.util.Kit;
 import com.dukla.web.base.CoreConstant;
 import com.dukla.web.base.GenericAction;
 import com.dukla.web.base.RequestCheck;
-import com.dukla.portal.admin.web.handler.UserHandler;
+import com.dukla.portal.admin.handler.UserHandler;
 import com.dukla.web.pojo.ModuleTreeVo;
 import com.dukla.web.pojo.UserModuleTreeVo;
 import net.sf.json.JSONArray;

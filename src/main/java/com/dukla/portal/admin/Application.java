@@ -1,16 +1,15 @@
-package com.timanetworks.iov;
+package com.dukla.portal.admin;
 
-import com.timanetworks.iov.core.jpa.handler.HibernateHandler;
-import com.timanetworks.iov.domain.SysCodes;
-import com.timanetworks.iov.util.Kit;
-import com.timanetworks.iov.web.base.CoreConstant;
+import com.dukla.base.domain.SysCodes;
+import com.dukla.base.jpa.handler.HibernateHandler;
+import com.dukla.base.util.Kit;
+import com.dukla.web.base.CoreConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
@@ -24,16 +23,15 @@ import java.util.Map;
  *
  * Created by dukla on 6/22/16.
  */
-@EnableEurekaClient
 @SpringBootApplication
 @ServletComponentScan
-public class WebApplication {
+public class Application {
 
-    private static final Logger logger= LoggerFactory.getLogger(WebApplication.class);
+    private static final Logger logger= LoggerFactory.getLogger(Application.class);
 
 
     public static void main(String[] args){
-        ConfigurableApplicationContext applicationContext=SpringApplication.run(WebApplication.class, args);
+        ConfigurableApplicationContext applicationContext=SpringApplication.run(Application.class, args);
         HibernateHandler hibernateHandler=applicationContext.getBean(HibernateHandler.class);
         //加载系统参数
         Map<String,String> orderProps=new HashMap<>();

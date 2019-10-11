@@ -1,4 +1,4 @@
-package com.dukla.portal.admin.web.base;
+package com.dukla.web.base;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
