@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:inline="text">[[${application.SYS_CONSTANT['sysName']}]]-车系DTC配置</title>
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.5/themes/bootstrap/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.5/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/frame.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/icon-extend.css" />
+</head>
+<body>
+<div style="float:left">
+    <table id="vehModeTree"></table>
+</div>
+<div id="noSelectNode" style="float:left">
+    <span style="font-size:11pt;font-weight:bold;">请选择车系</span>
+</div>
+<div id="nodeInfo" style="display:none;float:left">
+    <table id="vehEcuList"></table>
+</div>
+<!-- 菜单 -->
+<div id="treeMenu"></div>
+</body>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/jquery.min.js"></script>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/iov/metadata/veh_ecu.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var height=document.body.clientHeight-20;
+        var width=document.body.clientWidth;
+        vehEcu.init('/',width,height);
+        $(window).resize(function(){
+            var totalWidth=document.body.clientWidth;
+            $("#vehEcuList").datagrid('resize',{'width':totalWidth-350});
+        });
+    });
+</script>
+</html>

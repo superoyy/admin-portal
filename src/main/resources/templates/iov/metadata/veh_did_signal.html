@@ -1,0 +1,78 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:inline="text">[[${application.SYS_CONSTANT['sysName']}]]-车系信号配置</title>
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.5/themes/bootstrap/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.5/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/frame.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/icon-extend.css" />
+</head>
+<body>
+<div style="float:left">
+    <table id="vehModeTree"></table>
+</div>
+<div id="noSelectNode" style="float:left">
+    <span style="font-size:11pt;font-weight:bold;">请选择车系</span>
+</div>
+<div id="nodeInfo" style="display:none;float:left">
+    <table id="signalList"></table>
+</div>
+<!-- 菜单 -->
+<div id="treeMenu"></div>
+<!-- 对话框 -->
+<div id="dd">
+    <form id="ff" method="post">
+        <input type="hidden" name="vehModeCode" />
+        <div style="margin-top: 10px">
+            <label>版本号:&nbsp;</label>
+            <input type="text" name="protocolVersion" class="easyui-numberspinner" required="required" data-options="
+                      width:50,
+                      value:0,
+                      min:0,
+                      max:10,
+                      editable:false" />&nbsp;
+            <label>拷贝自:&nbsp;</label>
+            <input id="copyVehModeCode" name="copyVehModeCode" class="easyui-combobox" data-options="
+                      url:'/iov/metadata/vehDidSignal/listVehModeVersion',
+                      method:'post',
+                      mode:'remote',
+                      editable:false,
+                      valueField:'VAL',
+                      textField:'TEXT'"/>
+
+        </div>
+    </form>
+</div>
+<div id="ddConver">
+    <form id="ffConver" method="post">
+        <input type="hidden" name="id" />
+        <div style="margin-top: 10px">
+            <textarea name="signalConver" rows="15" cols="50"></textarea>
+        </div>
+    </form>
+</div>
+<div id="ddRemark">
+    <form id="ffRemark" method="post">
+        <input type="hidden" name="id" />
+        <div style="margin-top: 10px">
+            <textarea name="remark" rows="15" cols="50"></textarea>
+        </div>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/jquery.min.js"></script>
+<script type="text/javascript" src="/framework/ux/jeasyui/jquery.base64.js"></script>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/iov/metadata/veh_did_signal.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var height=document.body.clientHeight-20;
+        var width=document.body.clientWidth;
+        vehDidSignal.init('/',width,height);
+        $(window).resize(function(){
+            var totalWidth=document.body.clientWidth;
+            $("#signalList").datagrid('resize',{'width':totalWidth-350});
+        });
+    });
+</script>
+</html>

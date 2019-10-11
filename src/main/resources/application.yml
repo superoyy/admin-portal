@@ -1,0 +1,11 @@
+server:
+  port: 9301
+
+management:
+  context-path: /admin
+  security:
+    enabled: false
+
+logging:
+   level:
+     com.timanetworks: debug

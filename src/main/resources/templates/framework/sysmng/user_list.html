@@ -1,0 +1,77 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:inline="text">[[${application.SYS_CONSTANT['sysName']}]]-用户列表</title>
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.4.1/themes/bootstrap/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.4.1/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/frame.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/icon-extend.css" />
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/framework/sysmng/user_list.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var gridWidth = document.body.clientWidth - 20 ;
+            var gridHeight = document.body.clientHeight - 90 ;
+            userList.init("/",gridWidth,gridHeight);
+            $(window).resize(function(){
+                var gridWidth = document.body.clientWidth - 20;
+                $("#userList").datagrid('resize',{'width':gridWidth});
+            });
+        });
+    </script>
+</head>
+<body>
+<form id="queryForm" name="queryForm" method="post">
+    <fieldset>
+        <legend>查询条件</legend>
+        <p style="float:left;">登录名：<input type="text" name="loginName" size="20"/>&nbsp;</p>
+        <p style="float:left;">用户名：<input type="text" name="userName" size="20"/>&nbsp;</p>
+        <p style="float:left;">状态：<select name="loginState">
+            <option value="-1">--请选择--</option>
+            <option value="0">启用</option>
+            <option value="1">禁用</option>
+        </select></p>
+        <p style="float:right;">&nbsp;<a href="javascript:userList.resetQuery();" class="easyui-linkbutton" data-options="iconCls:'icon-undo'">重置</a>&nbsp;</p>
+        <p style="float:right;">&nbsp;<a href="javascript:userList.query();" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>&nbsp;</p>
+    </fieldset>
+</form>
+<table id="userList"></table>
+<!-- 详情窗口 -->
+<div id="detailWin">
+  <form name="ff" id="ff" method="post">
+  <input type="hidden" name="id" />
+  <p style="height:26px;">&nbsp;
+      登录名：<input type="text" name="loginName" />
+  </p>
+  <p style="height:26px;">&nbsp;
+      用户名：<input type="text" name="userName" />
+  </p>
+  <p style="height:26px;">&nbsp;
+      邮箱：<input type="text" name="mailAddr" />
+  </p>
+  <p style="height:26px;">&nbsp;
+      电话：<input type="text" name="phoneNum" />
+  </p>
+  <p style="height:26px;">&nbsp;
+      部门：<input type="text" name="deptId" id="deptId" />
+  </p>
+  <p style="height:26px;">&nbsp;
+      状态：<select name="loginState">
+        <option value="0">启用</option>
+        <option value="1">禁用</option>
+      </select>
+  </p>
+  <fieldset>
+      <legend><span style="font-weight:bold;color:#787878">所属角色</span></legend>
+   	  <p style="margin:0;height:30px;">
+      <input type="checkbox" name="loginRole" th:each="role : ${roles}" th:value="${role.id}" th:text="${role.roleName} + '&nbsp;'" />
+      </p>
+  </fieldset>
+  <p style="height:26px;margin-top:5px;text-align:center;">
+  	  <a href="javascript:userList.save()" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存</a>
+  </p>
+  </form>
+</div>
+</body>
+</html>

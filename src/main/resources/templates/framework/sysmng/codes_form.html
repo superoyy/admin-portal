@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:inline="text">[[${application.SYS_CONSTANT['sysName']}]]-码值表单</title>
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.4.1/themes/bootstrap/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.4.1/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/frame.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/icon-extend.css" />
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        function save(){
+            $('#ff').form('submit',{
+                  url:'codesmng.do?action=saveForm',
+                  onSubmit: function(){
+                     if($('#ff').form('validate')){
+                         $.messager.progress();
+                         return true;
+                     }
+                     return false;
+                  },
+                  success:function(responseText){
+                     $.messager.progress('close');
+                     $.messager.show({
+                        title:'提示',
+                        msg:'保存成功!',
+                        timeout:8000,
+                        showType:'slide'
+                     });
+                  }
+            });
+        }
+        $(function(){
+            var panelHeight = document.body.clientHeight - 70 ;
+            $('#ff').css('height',panelHeight);
+        });
+    </script>
+</head>
+<body>
+<form id="ff" method="post">
+    <input type="hidden" name="codeType" th:value="${codeType}" />
+        <p style="height:30px;" th:each="sysCodes : ${sysCodesList}" th:inline="text">
+            &nbsp;[[${sysCodes.codeName}]]：<input class="easyui-validatebox" type="text" th:name="${'codeId_' + sysCodes.id}" th:value="${sysCodes.codeValue}" data-options="validType:'length[0,300]'" size="40" th:inline="text"/>&nbsp;(代码:[[${sysCodes.codeKey}]])
+        </p>
+    <p style="height:30px;margin-top:5px;padding-left:200px;"><a href="javascript:save()" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存</a></p>
+</form>
+</body>
+</html>

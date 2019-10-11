@@ -1,0 +1,98 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:inline="text">[[${application.SYS_CONSTANT['sysName']}]]-部门管理</title>
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.4.1/themes/bootstrap/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.4.1/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/frame.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/icon-extend.css" />
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/framework/sysmng/dept_mng.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var height=document.body.clientHeight-20;
+            var width=document.body.clientWidth;
+            deptMng.init('/',width,height);
+            $(window).resize(function(){
+                var totalWidth=document.body.clientWidth;
+                $("#deptMembList").datagrid('resize',{'width':totalWidth-330});
+            });
+        });
+    </script>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td valign="top" width="300">
+            <table id="deptTree"></table>
+        </td>
+        <td valign="top">
+            <table id="noSelectNode" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="center" valign="middle" height="350"><span style="color:'#787878';font-size:11pt;font-weight:bold;">请选择节点</span></td>
+                </tr>
+            </table>
+            <div id="nodeInfo" style="display:none;">
+                <div style="height:30px;margin:0;padding-left:5px;">
+                    <p style="margin:0;height:30px;float:left;padding-top:8px;"><span style="font-size:10pt;font-weight:bold;">路径：</span><span id="path" style="font-size:10pt;" th:inline="text">[[${application.SYS_CONSTANT['orgName']}]]/</span></p>
+                    <p style="margin:0;height:30px;float:right;padding-top:8px;"><a href="javascript:deptMng.save()" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存</a></p>
+                </div>
+                <hr/>
+                <!-- 表单 -->
+                <div>
+                    <form id="ff" method="post">
+                        <input type="hidden" name="id" />
+                        <input type="hidden" name="upId" />
+                        <p style="height:26px;display:none;">
+                            <label>编号：</label>
+                            <label>
+                                <input type="text" name="deptNo"/>
+                            </label>
+                        </p>
+                        <p style="height:26px;">
+                            <label>名称：</label>
+                            <label>
+                                <input type="text" name="deptName"/>
+                            </label>
+                        </p>
+                        <p style="height:26px;">
+                            <label>状态：</label>
+                            <label>
+                                <select name="deptState">
+                                    <option value="0">启用</option>
+                                    <option value="1">禁用</option>
+                                </select>
+                            </label>
+                        </p>
+                        <p style="height:90px;">
+                            <label>说明：</label>
+                            <label>
+                                <textarea style="height:80px" cols="60" name="deptDesc"></textarea>
+                            </label>
+                        </p>
+                    </form>
+                </div>
+                <div>
+                    <table id="deptMembList"></table>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<!-- 菜单 -->
+<div id="deptTreeMenu" class="easyui-menu" style="width:120px;"> 
+    <div data-options="name:'add',iconCls:'icon-add'">增加</div>
+    <div data-options="name:'remove',iconCls:'icon-remove'">删除</div>
+    <div class="menu-sep"></div>    
+    <div data-options="name:'reload',iconCls:'icon-reload'">刷新</div>
+    <div data-options="name:'expand',iconCls:'icon-expand'">展开</div>
+    <div data-options="name:'collapse',iconCls:'icon-collapse'">收起</div>
+    <div class="menu-sep"></div>    
+    <div data-options="name:'top',iconCls:'icon-top'">置顶</div>
+    <div data-options="name:'up',iconCls:'icon-up'">上移</div>
+    <div data-options="name:'down',iconCls:'icon-down'">下移</div>
+    <div data-options="name:'bottom',iconCls:'icon-bottom'">置底</div>
+</div> 
+</body>
+</html>

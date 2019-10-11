@@ -1,0 +1,775 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title th:inline="text">[[${application.SYS_CONSTANT['sysName']}]]-模块管理</title>
+    <link rel="stylesheet" type="text/css" href="/framework/theme/metronic/admin/template_content/assets/plugins/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.4.1/themes/bootstrap/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/frame.css"/>
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/framework/ux/jeasyui/1.4.1/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/framework/sysmng/module_mng.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var treeHeight = document.body.clientHeight - 20;
+            moduleMng.init("/", treeHeight);
+        });
+    </script>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<!-- 功能树 -->
+<td valign="top" width="300">
+    <table id="moduleTree"></table>
+</td>
+<td valign="top">
+<table id="noSelectNode" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td align="center" valign="middle" height="350"><span style="color:'#787878';font-size:11pt;font-weight:bold;">请选择节点</span>
+        </td>
+    </tr>
+</table>
+<div id="nodeInfo" style="display:none;">
+<div style="height:30px;margin:0;padding-left:5px;">
+    <p style="margin:0;height:30px;float:left;padding-top:8px;font-size:9pt;"><span>路径：</span><span
+            id="modulePath">根节点/</span></p>
+
+    <p style="margin:0;height:30px;float:right;padding-top:8px;"><a href="javascript:moduleMng.save()"
+                                                                    class="easyui-linkbutton"
+                                                                    data-options="iconCls:'icon-save'">保存</a>&nbsp;<a
+            href="javascript:moduleMng.showModuleFuncListWin()" class="easyui-linkbutton"
+            data-options="iconCls:'icon-sitemap'">功能点</a></p>
+</div>
+<hr/>
+<!-- 表单 -->
+<form id="ff" method="post">
+<input type="hidden" name="id"/>
+<input type="hidden" name="upId"/>
+<input type="hidden" name="icon"/>
+<fieldset>
+    <legend><span style="color:#787878">基本信息</span></legend>
+    <p>名称：<input type="text" name="moduleName"/>&nbsp;状态：<select name="moduleState" id="moduleState">
+        <option value="0">启用</option>
+        <option value="1">禁用</option>
+    </select></p>
+    <p>地址：<input type="text" name="url" size="90"/></p>
+
+    <p>说明：<textarea name="moduleDesc" cols="80" rows="3"></textarea></p>
+</fieldset>
+<fieldset>
+    <legend><span style="color:#787878">角色权限</span></legend>
+    <p>
+        <input type="checkbox" name="permitRole" th:each="role : ${roles}" th:value="${role.id}" th:text="${role.roleName} + '&nbsp;'" />
+    </p>
+</fieldset>
+<fieldset>
+<legend><span style="color:#787878">功能图标&nbsp;已选：</span><i id="selectedIcon" class="icon-compass"></i>&nbsp;</legend>
+<div style="height:400px;overflow:auto;">
+<table id="iconTable" width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="45%" valign="top">
+    <p><i class="icon-compass"></i> icon-compass</p>
+
+    <p><i class="icon-eur"></i> icon-eur</p>
+
+    <p><i class="icon-dollar"></i> icon-dollar</p>
+
+    <p><i class="icon-yen"></i> icon-yen</p>
+
+    <p><i class="icon-won"></i> icon-won</p>
+
+    <p><i class="icon-file-text"></i> icon-file-text</p>
+
+    <p><i class="icon-sort-by-attributes-alt"></i> icon-sort-by-attributes-alt</p>
+
+    <p><i class="icon-thumbs-down"></i> icon-thumbs-down</p>
+
+    <p><i class="icon-xing-sign"></i> icon-xing-sign</p>
+
+    <p><i class="icon-instagram"></i> icon-instagram</p>
+
+    <p><i class="icon-bitbucket-sign"></i> icon-bitbucket-sign</p>
+
+    <p><i class="icon-long-arrow-up"></i> icon-long-arrow-up</p>
+
+    <p><i class="icon-windows"></i> icon-windows</p>
+
+    <p><i class="icon-skype"></i> icon-skype</p>
+
+    <p><i class="icon-male"></i> icon-male</p>
+
+    <p><i class="icon-archive"></i> icon-archive</p>
+
+    <p><i class="icon-renren"></i> icon-renren</p>
+
+    <p><i class="icon-collapse"></i> icon-collapse</p>
+
+    <p><i class="icon-euro"></i> icon-euro</p>
+
+    <p><i class="icon-inr"></i> icon-inr</p>
+
+    <p><i class="icon-cny"></i> icon-cny</p>
+
+    <p><i class="icon-btc"></i> icon-btc</p>
+
+    <p><i class="icon-sort-by-alphabet"></i> icon-sort-by-alphabet</p>
+
+    <p><i class="icon-sort-by-order"></i> icon-sort-by-order</p>
+
+    <p><i class="icon-youtube-sign"></i> icon-youtube-sign</p>
+
+    <p><i class="icon-youtube-play"></i> icon-youtube-play</p>
+
+    <p><i class="icon-flickr"></i> icon-flickr</p>
+
+    <p><i class="icon-tumblr"></i> icon-tumblr</p>
+
+    <p><i class="icon-long-arrow-left"></i> icon-long-arrow-left</p>
+
+    <p><i class="icon-android"></i> icon-android</p>
+
+    <p><i class="icon-foursquare"></i> icon-foursquare</p>
+
+    <p><i class="icon-gittip"></i> icon-gittip</p>
+
+    <p><i class="icon-bug"></i> icon-bug</p>
+
+    <p><i class="icon-collapse-top"></i> icon-collapse-top</p>
+
+    <p><i class="icon-gbp"></i> icon-gbp</p>
+
+    <p><i class="icon-rupee"></i> icon-rupee</p>
+
+    <p><i class="icon-renminbi"></i> icon-renminbi</p>
+
+    <p><i class="icon-bitcoin"></i> icon-bitcoin</p>
+
+    <p><i class="icon-sort-by-alphabet-alt"></i> icon-sort-by-alphabet-alt</p>
+
+    <p><i class="icon-sort-by-order-alt"></i> icon-sort-by-order-alt</p>
+
+    <p><i class="icon-youtube"></i> icon-youtube</p>
+
+    <p><i class="icon-dropbox"></i> icon-dropbox</p>
+
+    <p><i class="icon-adn"></i> icon-adn</p>
+
+    <p><i class="icon-tumblr-sign"></i> icon-tumblr-sign</p>
+
+    <p><i class="icon-long-arrow-right"></i> icon-long-arrow-right</p>
+
+    <p><i class="icon-linux"></i> icon-linux</p>
+
+    <p><i class="icon-trello"></i> icon-trello</p>
+
+    <p><i class="icon-sun"></i> icon-sun</p>
+
+    <p><i class="icon-vk"></i> icon-vk</p>
+
+    <p><i class="icon-expand"></i> icon-expand</p>
+
+    <p><i class="icon-usd"></i> icon-usd</p>
+
+    <p><i class="icon-jpy"></i> icon-jpy</p>
+
+    <p><i class="icon-krw"></i> icon-krw</p>
+
+    <p><i class="icon-file"></i> icon-file</p>
+
+    <p><i class="icon-sort-by-attributes"></i> icon-sort-by-attributes</p>
+
+    <p><i class="icon-thumbs-up"></i> icon-thumbs-up</p>
+
+    <p><i class="icon-xing"></i> icon-xing</p>
+
+    <p><i class="icon-stackexchange"></i> icon-stackexchange</p>
+
+    <p><i class="icon-bitbucket"></i> icon-bitbucket</p>
+
+    <p><i class="icon-long-arrow-down"></i> icon-long-arrow-down</p>
+
+    <p><i class="icon-apple"></i> icon-apple</p>
+
+    <p><i class="icon-dribbble"></i> icon-dribbble</p>
+
+    <p><i class="icon-female"></i> icon-female</p>
+
+    <p><i class="icon-moon"></i> icon-moon</p>
+
+    <p><i class="icon-weibo"></i> icon-weibo</p>
+
+    <p><i class="icon-adjust"></i> icon-adjust</p>
+
+    <p><i class="icon-asterisk"></i> icon-asterisk</p>
+
+    <p><i class="icon-ban-circle"></i> icon-ban-circle</p>
+
+    <p><i class="icon-bar-chart"></i> icon-bar-chart</p>
+
+    <p><i class="icon-barcode"></i> icon-barcode</p>
+
+    <p><i class="icon-beaker"></i> icon-beaker</p>
+
+    <p><i class="icon-bell"></i> icon-bell</p>
+
+    <p><i class="icon-bolt"></i> icon-bolt</p>
+
+    <p><i class="icon-book"></i> icon-book</p>
+
+    <p><i class="icon-bookmark"></i> icon-bookmark</p>
+
+    <p><i class="icon-bookmark-empty"></i> icon-bookmark-empty</p>
+
+    <p><i class="icon-briefcase"></i> icon-briefcase</p>
+
+    <p><i class="icon-bullhorn"></i> icon-bullhorn</p>
+
+    <p><i class="icon-calendar"></i> icon-calendar</p>
+
+    <p><i class="icon-camera"></i> icon-camera</p>
+
+    <p><i class="icon-camera-retro"></i> icon-camera-retro</p>
+
+    <p><i class="icon-certificate"></i> icon-certificate</p>
+
+    <p><i class="icon-check"></i> icon-check</p>
+
+    <p><i class="icon-check-empty"></i> icon-check-empty</p>
+
+    <p><i class="icon-cloud"></i> icon-cloud</p>
+
+    <p><i class="icon-cog"></i> icon-cog</p>
+
+    <p><i class="icon-cogs"></i> icon-cogs</p>
+
+    <p><i class="icon-comment"></i> icon-comment</p>
+
+    <p><i class="icon-comment-alt"></i> icon-comment-alt</p>
+
+    <p><i class="icon-comments"></i> icon-comments</p>
+
+    <p><i class="icon-comments-alt"></i> icon-comments-alt</p>
+
+    <p><i class="icon-credit-card"></i> icon-credit-card</p>
+
+    <p><i class="icon-dashboard"></i> icon-dashboard</p>
+
+    <p><i class="icon-download"></i> icon-download</p>
+
+    <p><i class="icon-download-alt"></i> icon-download-alt</p>
+
+    <p><i class="icon-edit"></i> icon-edit</p>
+
+    <p><i class="icon-envelope"></i> icon-envelope</p>
+
+    <p><i class="icon-envelope-alt"></i> icon-envelope-alt</p>
+
+    <p><i class="icon-exclamation-sign"></i> icon-exclamation-sign</p>
+
+    <p><i class="icon-external-link"></i> icon-external-link</p>
+
+    <p><i class="icon-eye-close"></i> icon-eye-close</p>
+
+    <p><i class="icon-eye-open"></i> icon-eye-open</p>
+
+    <p><i class="icon-facetime-video"></i> icon-facetime-video</p>
+
+    <p><i class="icon-film"></i> icon-film</p>
+
+    <p><i class="icon-filter"></i> icon-filter</p>
+
+    <p><i class="icon-fire"></i> icon-fire</p>
+
+    <p><i class="icon-flag"></i> icon-flag</p>
+
+    <p><i class="icon-folder-close"></i> icon-folder-close</p>
+
+    <p><i class="icon-folder-open"></i> icon-folder-open</p>
+
+    <p><i class="icon-gift"></i> icon-gift</p>
+
+    <p><i class="icon-glass"></i> icon-glass</p>
+
+    <p><i class="icon-globe"></i> icon-globe</p>
+
+    <p><i class="icon-group"></i> icon-group</p>
+
+    <p><i class="icon-hdd"></i> icon-hdd</p>
+
+    <p><i class="icon-headphones"></i> icon-headphones</p>
+
+    <p><i class="icon-heart"></i> icon-heart</p>
+
+    <p><i class="icon-heart-empty"></i> icon-heart-empty</p>
+
+    <p><i class="icon-home"></i> icon-home</p>
+
+    <p><i class="icon-inbox"></i> icon-inbox</p>
+
+    <p><i class="icon-info-sign"></i> icon-info-sign</p>
+
+    <p><i class="icon-key"></i> icon-key</p>
+
+    <p><i class="icon-leaf"></i> icon-leaf</p>
+
+    <p><i class="icon-legal"></i> icon-legal</p>
+
+    <p><i class="icon-lemon"></i> icon-lemon</p>
+
+    <p><i class="icon-lock"></i> icon-lock</p>
+
+    <p><i class="icon-unlock"></i> icon-unlock</p>
+
+    <p><i class="icon-magic"></i> icon-magic</p>
+
+    <p><i class="icon-magnet"></i> icon-magnet</p>
+
+    <p><i class="icon-map-marker"></i> icon-map-marker</p>
+
+    <p><i class="icon-minus"></i> icon-minus</p>
+
+    <p><i class="icon-minus-sign"></i> icon-minus-sign</p>
+
+    <p><i class="icon-money"></i> icon-money</p>
+
+    <p><i class="icon-move"></i> icon-move</p>
+
+    <p><i class="icon-music"></i> icon-music</p>
+
+    <p><i class="icon-off"></i> icon-off</p>
+
+    <p><i class="icon-ok"></i> icon-ok</p>
+
+    <p><i class="icon-ok-circle"></i> icon-ok-circle</p>
+
+    <p><i class="icon-ok-sign"></i> icon-ok-sign</p>
+
+    <p><i class="icon-pencil"></i> icon-pencil</p>
+
+    <p><i class="icon-picture"></i> icon-picture</p>
+
+    <p><i class="icon-plane"></i> icon-plane</p>
+
+    <p><i class="icon-plus"></i> icon-plus</p>
+
+    <p><i class="icon-plus-sign"></i> icon-plus-sign</p>
+
+    <p><i class="icon-print"></i> icon-print</p>
+
+    <p><i class="icon-pushpin"></i> icon-pushpin</p>
+
+    <p><i class="icon-qrcode"></i> icon-qrcode</p>
+
+    <p><i class="icon-question-sign"></i> icon-question-sign</p>
+
+    <p><i class="icon-random"></i> icon-random</p>
+
+    <p><i class="icon-refresh"></i> icon-refresh</p>
+
+    <p><i class="icon-remove"></i> icon-remove</p>
+
+    <p><i class="icon-remove-circle"></i> icon-remove-circle</p>
+
+    <p><i class="icon-remove-sign"></i> icon-remove-sign</p>
+
+    <p><i class="icon-reorder"></i> icon-reorder</p>
+
+    <p><i class="icon-resize-horizontal"></i> icon-resize-horizontal</p>
+
+    <p><i class="icon-resize-vertical"></i> icon-resize-vertical</p>
+
+    <p><i class="icon-retweet"></i> icon-retweet</p>
+
+    <p><i class="icon-road"></i> icon-road</p>
+
+    <p><i class="icon-rss"></i> icon-rss</p>
+
+    <p><i class="icon-screenshot"></i> icon-screenshot</p>
+
+    <p><i class="icon-search"></i> icon-search</p>
+
+    <p><i class="icon-share"></i> icon-share</p>
+
+    <p><i class="icon-share-alt"></i> icon-share-alt</p>
+
+    <p><i class="icon-shopping-cart"></i> icon-shopping-cart</p>
+</td>
+<td width="10" valign="top">&nbsp;</td>
+<td valign="top">
+    <p><i class="icon-signal"></i> icon-signal</p>
+
+    <p><i class="icon-signin"></i> icon-signin</p>
+
+    <p><i class="icon-signout"></i> icon-signout</p>
+
+    <p><i class="icon-sitemap"></i> icon-sitemap</p>
+
+    <p><i class="icon-sort"></i> icon-sort</p>
+
+    <p><i class="icon-sort-down"></i> icon-sort-down</p>
+
+    <p><i class="icon-sort-up"></i> icon-sort-up</p>
+
+    <p><i class="icon-star"></i> icon-star</p>
+
+    <p><i class="icon-star-empty"></i> icon-star-empty</p>
+
+    <p><i class="icon-star-half"></i> icon-star-half</p>
+
+    <p><i class="icon-tag"></i> icon-tag</p>
+
+    <p><i class="icon-tags"></i> icon-tags</p>
+
+    <p><i class="icon-tasks"></i> icon-tasks</p>
+
+    <p><i class="icon-thumbs-down"></i> icon-thumbs-down</p>
+
+    <p><i class="icon-thumbs-up"></i> icon-thumbs-up</p>
+
+    <p><i class="icon-time"></i> icon-time</p>
+
+    <p><i class="icon-tint"></i> icon-tint</p>
+
+    <p><i class="icon-trash"></i> icon-trash</p>
+
+    <p><i class="icon-trophy"></i> icon-trophy</p>
+
+    <p><i class="icon-truck"></i> icon-truck</p>
+
+    <p><i class="icon-umbrella"></i> icon-umbrella</p>
+
+    <p><i class="icon-upload"></i> icon-upload</p>
+
+    <p><i class="icon-upload-alt"></i> icon-upload-alt</p>
+
+    <p><i class="icon-user"></i> icon-user</p>
+
+    <p><i class="icon-user-md"></i> icon-user-md</p>
+
+    <p><i class="icon-volume-off"></i> icon-volume-off</p>
+
+    <p><i class="icon-volume-down"></i> icon-volume-down</p>
+
+    <p><i class="icon-volume-up"></i> icon-volume-up</p>
+
+    <p><i class="icon-warning-sign"></i> icon-warning-sign</p>
+
+    <p><i class="icon-wrench"></i> icon-wrench</p>
+
+    <p><i class="icon-zoom-in"></i> icon-zoom-in</p>
+
+    <p><i class="icon-zoom-out"></i> icon-zoom-out</p>
+
+    <p><i class="icon-bitcoin"></i> icon-bitcoin</p>
+
+    <p><i class="icon-eur"></i> icon-eur</p>
+
+    <p><i class="icon-jpy"></i> icon-jpy</p>
+
+    <p><i class="icon-usd"></i> icon-usd</p>
+
+    <p><i class="icon-btc"></i> icon-btc</p>
+
+    <p><i class="icon-euro"></i> icon-euro</p>
+
+    <p><i class="icon-krw"></i> icon-krw</p>
+
+    <p><i class="icon-won"></i> icon-won</p>
+
+    <p><i class="icon-cny"></i> icon-cny</p>
+
+    <p><i class="icon-gbp"></i> icon-gbp</p>
+
+    <p><i class="icon-renminbi"></i> icon-renminbi</p>
+
+    <p><i class="icon-yen"></i> icon-yen</p>
+
+    <p><i class="icon-dollar"></i> icon-dollar</p>
+
+    <p><i class="icon-inr"></i> icon-inr</p>
+
+    <p><i class="icon-rupee"></i> icon-rupee</p>
+
+    <p><i class="icon-file"></i> icon-file</p>
+
+    <p><i class="icon-cut"></i> icon-cut</p>
+
+    <p><i class="icon-copy"></i> icon-copy</p>
+
+    <p><i class="icon-paste"></i> icon-paste</p>
+
+    <p><i class="icon-save"></i> icon-save</p>
+
+    <p><i class="icon-undo"></i> icon-undo</p>
+
+    <p><i class="icon-repeat"></i> icon-repeat</p>
+
+    <p><i class="icon-paper-clip"></i> icon-paper-clip</p>
+
+    <p><i class="icon-text-height"></i> icon-text-height</p>
+
+    <p><i class="icon-text-width"></i> icon-text-width</p>
+
+    <p><i class="icon-align-left"></i> icon-align-left</p>
+
+    <p><i class="icon-align-center"></i> icon-align-center</p>
+
+    <p><i class="icon-align-right"></i> icon-align-right</p>
+
+    <p><i class="icon-align-justify"></i> icon-align-justify</p>
+
+    <p><i class="icon-indent-left"></i> icon-indent-left</p>
+
+    <p><i class="icon-indent-right"></i> icon-indent-right</p>
+
+    <p><i class="icon-font"></i> icon-font</p>
+
+    <p><i class="icon-bold"></i> icon-bold</p>
+
+    <p><i class="icon-italic"></i> icon-italic</p>
+
+    <p><i class="icon-strikethrough"></i> icon-strikethrough</p>
+
+    <p><i class="icon-underline"></i> icon-underline</p>
+
+    <p><i class="icon-link"></i> icon-link</p>
+
+    <p><i class="icon-columns"></i> icon-columns</p>
+
+    <p><i class="icon-table"></i> icon-table</p>
+
+    <p><i class="icon-th-large"></i> icon-th-large</p>
+
+    <p><i class="icon-th"></i> icon-th</p>
+
+    <p><i class="icon-th-list"></i> icon-th-list</p>
+
+    <p><i class="icon-list"></i> icon-list</p>
+
+    <p><i class="icon-list-ol"></i> icon-list-ol</p>
+
+    <p><i class="icon-list-ul"></i> icon-list-ul</p>
+
+    <p><i class="icon-list-alt"></i> icon-list-alt</p>
+
+    <p><i class="icon-arrow-down"></i> icon-arrow-down</p>
+
+    <p><i class="icon-arrow-left"></i> icon-arrow-left</p>
+
+    <p><i class="icon-arrow-right"></i> icon-arrow-right</p>
+
+    <p><i class="icon-arrow-up"></i> icon-arrow-up</p>
+
+    <p><i class="icon-chevron-down"></i> icon-chevron-down</p>
+
+    <p><i class="icon-circle-arrow-down"></i> icon-circle-arrow-down</p>
+
+    <p><i class="icon-circle-arrow-left"></i> icon-circle-arrow-left</p>
+
+    <p><i class="icon-circle-arrow-right"></i> icon-circle-arrow-right</p>
+
+    <p><i class="icon-circle-arrow-up"></i> icon-circle-arrow-up</p>
+
+    <p><i class="icon-chevron-left"></i> icon-chevron-left</p>
+
+    <p><i class="icon-caret-down"></i> icon-caret-down</p>
+
+    <p><i class="icon-caret-left"></i> icon-caret-left</p>
+
+    <p><i class="icon-caret-right"></i> icon-caret-right</p>
+
+    <p><i class="icon-caret-up"></i> icon-caret-up</p>
+
+    <p><i class="icon-chevron-right"></i> icon-chevron-right</p>
+
+    <p><i class="icon-hand-down"></i> icon-hand-down</p>
+
+    <p><i class="icon-hand-left"></i> icon-hand-left</p>
+
+    <p><i class="icon-hand-right"></i> icon-hand-right</p>
+
+    <p><i class="icon-hand-up"></i> icon-hand-up</p>
+
+    <p><i class="icon-chevron-up"></i> icon-chevron-up</p>
+
+    <p><i class="icon-play-circle"></i> icon-play-circle</p>
+
+    <p><i class="icon-play"></i> icon-play</p>
+
+    <p><i class="icon-pause"></i> icon-pause</p>
+
+    <p><i class="icon-stop"></i> icon-stop</p>
+
+    <p><i class="icon-step-backward"></i> icon-step-backward</p>
+
+    <p><i class="icon-fast-backward"></i> icon-fast-backward</p>
+
+    <p><i class="icon-backward"></i> icon-backward</p>
+
+    <p><i class="icon-forward"></i> icon-forward</p>
+
+    <p><i class="icon-fast-forward"></i> icon-fast-forward</p>
+
+    <p><i class="icon-step-forward"></i> icon-step-forward</p>
+
+    <p><i class="icon-eject"></i> icon-eject</p>
+
+    <p><i class="icon-fullscreen"></i> icon-fullscreen</p>
+
+    <p><i class="icon-resize-full"></i> icon-resize-full</p>
+
+    <p><i class="icon-resize-small"></i> icon-resize-small</p>
+
+    <p><i class="icon-adn"></i> icon-adn</p>
+
+    <p><i class="icon-bitbucket-sign"></i> icon-bitbucket-sign</p>
+
+    <p><i class="icon-dribbble"></i> icon-dribbble</p>
+
+    <p><i class="icon-flickr"></i> icon-flickr</p>
+
+    <p><i class="icon-github-sign"></i> icon-github-sign</p>
+
+    <p><i class="icon-html5"></i> icon-html5</p>
+
+    <p><i class="icon-linux"></i> icon-linux</p>
+
+    <p><i class="icon-renren"></i> icon-renren</p>
+
+    <p><i class="icon-tumblr"></i> icon-tumblr</p>
+
+    <p><i class="icon-vk"></i> icon-vk</p>
+
+    <p><i class="icon-xing-sign"></i> icon-xing-sign</p>
+
+    <p><i class="icon-android"></i> icon-android</p>
+
+    <p><i class="icon-bitcoin"></i> icon-bitcoin</p>
+
+    <p><i class="icon-dropbox"></i> icon-dropbox</p>
+
+    <p><i class="icon-foursquare"></i> icon-foursquare</p>
+
+    <p><i class="icon-gittip"></i> icon-gittip</p>
+
+    <p><i class="icon-instagram"></i> icon-instagram</p>
+
+    <p><i class="icon-maxcdn"></i> icon-maxcdn</p>
+
+    <p><i class="icon-skype"></i> icon-skype</p>
+
+    <p><i class="icon-tumblr-sign"></i> icon-tumblr-sign</p>
+
+    <p><i class="icon-weibo"></i> icon-weibo</p>
+
+    <p><i class="icon-youtube"></i> icon-youtube</p>
+
+    <p><i class="icon-apple"></i> icon-apple</p>
+
+    <p><i class="icon-facebook"></i> icon-facebook</p>
+
+    <p><i class="icon-github"></i> icon-github</p>
+
+    <p><i class="icon-google-plus"></i> icon-google-plus</p>
+
+    <p><i class="icon-linkedin"></i> icon-linkedin</p>
+
+    <p><i class="icon-pinterest"></i> icon-pinterest</p>
+
+    <p><i class="icon-stackexchange"></i> icon-stackexchange</p>
+
+    <p><i class="icon-twitter"></i> icon-twitter</p>
+
+    <p><i class="icon-windows"></i> icon-windows</p>
+
+    <p><i class="icon-youtube-play"></i> icon-youtube-play</p>
+
+    <p><i class="icon-bitbucket"></i> icon-bitbucket</p>
+
+    <p><i class="icon-css3"></i> icon-css3</p>
+
+    <p><i class="icon-facebook-sign"></i> icon-facebook-sign</p>
+
+    <p><i class="icon-github-alt"></i> icon-github-alt</p>
+
+    <p><i class="icon-google-plus-sign"></i> icon-google-plus-sign</p>
+
+    <p><i class="icon-linkedin-sign"></i> icon-linkedin-sign</p>
+
+    <p><i class="icon-pinterest-sign"></i> icon-pinterest-sign</p>
+
+    <p><i class="icon-trello"></i> icon-trello</p>
+
+    <p><i class="icon-twitter-sign"></i> icon-twitter-sign</p>
+
+    <p><i class="icon-xing"></i> icon-xing</p>
+
+    <p><i class="icon-youtube-sign"></i> icon-youtube-sign</p>
+
+    <p><i class="icon-ambulance"></i> icon-ambulance</p>
+
+    <p><i class="icon-plus-sign-alt"></i> icon-plus-sign-alt</p>
+
+    <p><i class="icon-h-sign"></i> icon-h-sign</p>
+
+    <p><i class="icon-stethoscope"></i> icon-stethoscope</p>
+
+    <p><i class="icon-hospital"></i> icon-hospital</p>
+
+    <p><i class="icon-user-md"></i> icon-user-md</p>
+
+    <p><i class="icon-medkit"></i> icon-medkit</p>
+</td>
+</tr>
+</table>
+</div>
+</fieldset>
+</form>
+</div>
+</td>
+</tr>
+</table>
+<!-- 模块树菜单 -->
+<div id="moduleTreeMenu" style="width:120px;">
+    <div data-options="name:'add',iconCls:'icon-plus'">增加</div>
+    <div data-options="name:'remove',iconCls:'icon-remove'">删除</div>
+    <div class="menu-sep"></div>
+    <div data-options="name:'reload',iconCls:'icon-refresh'">刷新</div>
+    <div data-options="name:'expand',iconCls:'icon-expand'">展开</div>
+    <div data-options="name:'collapse',iconCls:'icon-collapse'">收起</div>
+    <div class="menu-sep"></div>
+    <div data-options="name:'top',iconCls:'icon-upload-alt'">置顶</div>
+    <div data-options="name:'up',iconCls:'icon-sort-up'">上移</div>
+    <div data-options="name:'down',iconCls:'icon-sort-down'">下移</div>
+    <div data-options="name:'bottom',iconCls:'icon-download-alt'">置底</div>
+</div>
+<!--功能项-->
+<div id="moduleFuncListWin">
+    <table id="moduleFuncList"></table>
+</div>
+<!-- 功能点窗口 -->
+<div id="moduleFuncWin">
+    <form id="moduleFuncForm" method="post">
+        <input type="hidden" name="id"/>
+        <input type="hidden" name="moduleId"/>
+
+        <p>名称：<input class="easyui-validatebox" type="text" name="funcName"
+                     data-options="required:true,validType:'length[1,20]'"/></p>
+
+        <p>路径：<input type="text" name="url" size="60"/></p>
+
+        <p>说明：<textarea class="easyui-validatebox" name="funcDesc" data-options="validType:'length[0,200]'" cols="60"
+                        rows="6"></textarea></p>
+        <fieldset>
+            <legend><span style="font-weight:bold;color:#787878">可用角色</span></legend>
+            <p>
+                <input onclick="moduleMng.changeFuncPermit(this.checked,this.value)" type="checkbox" name="permitFuncRole" th:each="role : ${roles}" th:value="${role.id}" th:text="${role.roleName} + '&nbsp;'" />
+            </p>
+        </fieldset>
+        <p style="height:30px;text-align:center;"><a href="javascript:moduleMng.saveModuleFunc()"
+                                                     class="easyui-linkbutton">保存</a></p>
+    </form>
+</div>
+</body>
+</html>

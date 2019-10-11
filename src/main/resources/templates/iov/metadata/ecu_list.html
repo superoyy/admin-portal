@@ -1,0 +1,58 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:inline="text">[[${application.SYS_CONSTANT['sysName']}]]-ECU列表</title>
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.5/themes/bootstrap/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.5/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/frame.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/icon-extend.css" />
+</head>
+<body>
+<form id="queryForm" name="queryForm" method="post">
+    <fieldset>
+        <legend>查询条件</legend>
+        <p style="float:left;">代码：<input type="text" name="code" size="20"/>&nbsp;</p>
+        <p style="float:left;">英文名：<input type="text" name="showNameEn" size="20"/>&nbsp;</p>
+        <p style="float:left;">中文名：<input type="text" name="showNameCn" size="20"/>&nbsp;</p>
+        <p style="float:right;">&nbsp;<a href="javascript:ecuList.resetQuery();" class="easyui-linkbutton" data-options="iconCls:'icon-undo'">重置</a>&nbsp;</p>
+        <p style="float:right;">&nbsp;<a href="javascript:ecuList.query();" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>&nbsp;</p>
+    </fieldset>
+</form>
+<table id="ecuList"></table>
+<!-- 详情窗口 -->
+<div id="detailWin">
+    <form name="ff" id="ff" method="post">
+        <input type="hidden" name="id" />
+        <p style="height:26px;">&nbsp;
+            代码：<input type="text" name="code" />
+        </p>
+        <p style="height:26px;">&nbsp;
+            英文名：<input type="text" name="showNameEn" />
+        </p>
+        <p style="height:26px;">&nbsp;
+            中文名：<input type="text" name="showNameCn" />
+        </p>
+        <p style="height:100px;">&nbsp;
+            说明：<textarea name="remark" style="width:460px;height:90px;"></textarea>
+        </p>
+        <p style="height:26px;margin-top:5px;text-align:center;">
+            <a href="javascript:ecuList.save()" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存</a>
+        </p>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/jquery.min.js"></script>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/iov/metadata/ecu_list.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var gridWidth = document.body.clientWidth - 30 ;
+        var gridHeight = document.body.clientHeight - 100 ;
+        ecuList.init("/",gridWidth,gridHeight);
+        $(window).resize(function(){
+            var gridWidth = document.body.clientWidth - 30;
+            $("#ecuList").datagrid('resize',{'width':gridWidth});
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:inline="text">[[${application.SYS_CONSTANT['sysName']}]]-车辆在线查询</title>
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.5/themes/bootstrap/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/ux/jeasyui/1.5/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/frame.css" />
+    <link rel="stylesheet" type="text/css" href="/framework/theme/custom/icon-extend.css" />
+</head>
+<body>
+<div style="float:left">
+    <table id="vgTree"></table>
+</div>
+<div id="noSelectNode" style="float:left">
+    <span style="font-size:11pt;font-weight:bold;">请选择网关节点</span>
+</div>
+<div id="nodeInfo" style="display:none;float:left">
+    <table id="onlineList"></table>
+</div>
+<!-- 对话框 -->
+<div id="dd">
+    <form id="ff">
+        <div style="margin-top: 10px">
+            <label>VIN:&nbsp;</label>
+            <input id="vin" name="vin" type="text" style="width:280px"/>
+        </div>
+    </form>
+    <p id="queryResult">&nbsp;</p>
+</div>
+</body>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/jquery.min.js"></script>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/framework/ux/jeasyui/1.5/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/iov/monitor/veh_online.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var height=document.body.clientHeight-20;
+        var width=document.body.clientWidth;
+        vehOnline.init('/',width,height);
+        $(window).resize(function(){
+            var totalWidth=document.body.clientWidth;
+            $("#onlineList").datagrid('resize',{'width':totalWidth-430});
+        });
+    });
+</script>
+</html>
