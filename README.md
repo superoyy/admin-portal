@@ -48,7 +48,7 @@ INSERT INTO `sys_codes` VALUES ('63dfe018-e91a-4d7e-bf92-3296f0241578', null, 'V
 INSERT INTO `sys_codes` VALUES ('6abea5c3-e7a2-4171-bd08-903d2cef32aa', null, 'VEH_SERIES_MAPPING', 'JH625', 'JH625', '重卡', null, '0', '17', null, null, null);
 INSERT INTO `sys_codes` VALUES ('6e2c9565-ca67-4554-9057-80327f37fb0f', null, 'IOV_CONSOLE_TASK', 'adjustTirePressureAlarmStatus', '', '清理胎压告警状态', null, '1', '1', '10分钟执行一次,把A013,A014,A015,A016 val=1|2|3 超过4小时未变化的 set val=0', null, null);
 INSERT INTO `sys_codes` VALUES ('7151e810-39ea-4a80-af23-b768fd2339bb', null, 'VEH_SERIES_MAPPING', 'N600', 'N600', '轻卡1', null, '0', '7', null, null, null);
-INSERT INTO `sys_codes` VALUES ('7974fff6-831a-102f-86c1-ab092cc04000', null, 'SYS_PROP', 'sysName', '联网平台(Iov)-控制台', '系统名称', '0', '0', '1', null, '', null);
+INSERT INTO `sys_codes` VALUES ('7974fff6-831a-102f-86c1-ab092cc04000', null, 'SYS_PROP', 'sysName', 'ADMIN-控制台', '系统名称', '0', '0', '1', null, '', null);
 INSERT INTO `sys_codes` VALUES ('7a53b693-68b7-47bb-83d0-8c599f1dd148', null, 'DTC_TOTAL_SCORE', 'POC-BV.dtc.total.score.level1', '327', '1', null, '0', '4', null, null, '10');
 INSERT INTO `sys_codes` VALUES ('7b0cd7af-9554-4ea3-ab35-4426ebbc1c5f', null, 'MANU_CONTROL', 'key_2', '131', 'B车厂', null, '0', '2', null, null, null);
 INSERT INTO `sys_codes` VALUES ('7bed21e9-a9a2-4a27-a608-81f688e03cc3', null, 'DTC_TOTAL_SCORE', 'POC-CV.dtc.total.score.level1', '327', '1', null, '0', '1', '一级故障', null, '10');
@@ -165,7 +165,7 @@ CREATE TABLE `sys_login` (
 -- Records of sys_login
 -- ----------------------------
 INSERT INTO `sys_login` VALUES ('49aff965-2532-4236-9ee1-86c9501f6be7', 'data', '查询人', '8d777f385d3dfec8815d20f7496026dc', '0', null, '2', '', '', 'a4a48cc6-f219-4022-bd16-790a669932d4');
-INSERT INTO `sys_login` VALUES ('c887bb22-80ed-102f-a5e0-289b92097530', 'admin', '系统管理员', '0192023a7bbd73250516f069df18b500', '0', '0', '1', '12345678901', 'admin@timanetworks.com', 'a4a48cc6-f219-4022-bd16-790a669932d4');
+INSERT INTO `sys_login` VALUES ('c887bb22-80ed-102f-a5e0-289b92097530', 'admin', '系统管理员', '0192023a7bbd73250516f069df18b500', '0', '0', '1', '12345678901', 'admin@xxx.com', 'a4a48cc6-f219-4022-bd16-790a669932d4');
 
 -- ----------------------------
 -- Table structure for sys_login_role
