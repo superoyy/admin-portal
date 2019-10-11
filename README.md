@@ -1,19 +1,5 @@
 # admin-portal
 ## base-db init script
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : TPC_POC_172.20.38.91
-Source Server Version : 50631
-Source Host           : 172.20.38.91:3306
-Source Database       : IOV-41X
-
-Target Server Type    : MYSQL
-Target Server Version : 50631
-File Encoding         : 65001
-
-Date: 2019-10-11 13:48:30
-*/
 
 SET FOREIGN_KEY_CHECKS=0;
 
