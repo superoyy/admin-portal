@@ -1,7 +1,8 @@
-package com.dukla.portal.admin;
+package com.dukla;
 
 import com.dukla.base.domain.SysCodes;
 import com.dukla.base.jpa.handler.HibernateHandler;
+import com.dukla.base.mongodb.handler.MongodbHandler;
 import com.dukla.base.util.Kit;
 import com.dukla.web.base.CoreConstant;
 import org.slf4j.Logger;
@@ -27,14 +28,19 @@ public class ApplicationInit implements ApplicationListener<ApplicationReadyEven
     public void onApplicationEvent(ApplicationReadyEvent event) {
         if(event.getApplicationContext()!=null){
             HibernateHandler hibernateHandler = event.getApplicationContext().getBean(HibernateHandler.class);
-//            //加载系统参数
-//            Map<String,String> orderProps=new HashMap<>();
-//            orderProps.put("codeOrder", "asc");
-//            List<SysCodes> sysCodesList=hibernateHandler.getEntityListByProperty(SysCodes.class, "codeType", "SYS_PROP", orderProps);
-//            for(SysCodes sysCodes:sysCodesList){
-//                CoreConstant.SYS_PROP.put(sysCodes.getCodeKey(), sysCodes.getCodeValue());
-//                logger.info("Load CoreConstant {}->{}", sysCodes.getCodeKey(), sysCodes.getCodeValue());
-//            }
+            MongodbHandler mongodbHandler = event.getApplicationContext().getBean(MongodbHandler.class);
+
+            hibernateHandler.registerDaoMap(event.getApplicationContext());
+            mongodbHandler.registerDaoMap(event.getApplicationContext());
+
+            //加载系统参数
+            Map<String,String> orderProps=new HashMap<>();
+            orderProps.put("codeOrder", "asc");
+            List<SysCodes> sysCodesList=hibernateHandler.getEntityListByProperty(SysCodes.class, "codeType", "SYS_PROP", orderProps);
+            for(SysCodes sysCodes:sysCodesList){
+                CoreConstant.SYS_PROP.put(sysCodes.getCodeKey(), sysCodes.getCodeValue());
+                logger.info("Load CoreConstant {}->{}", sysCodes.getCodeKey(), sysCodes.getCodeValue());
+            }
             logger.info("系统启动,"+ Kit.formatDateTime(new Date(), "yyyy.MM.dd HH:mm:ss"));
         }
 

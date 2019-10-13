@@ -12,7 +12,7 @@ spring:
       enabled: true
       force: true
   thymeleaf:
-    mode: HTML
+    mode: HTML5
     prefix: classpath:/templates
     encoding: UTF-8
     content-type: text/html
@@ -26,32 +26,32 @@ spring:
   profiles: dev
   data:
     mongodb:
-      #    ref https://docs.mongodb.com/manual/reference/connection-string/#connections-connection-options
-      #    authMechanism :SCRAM-SHA-1 | MONGODB-CR | MONGODB-X509 | GSSAPI (Kerberos) | PLAIN (LDAP SASL)
-      #    uri: mongodb://mongodb:pwd@ip:port/db-xx?ssl=false&authMechanism=SCRAM-SHA-1
+#          ref https://docs.mongodb.com/manual/reference/connection-string/#connections-connection-options
+#          authMechanism :SCRAM-SHA-1 | MONGODB-CR | MONGODB-X509 | GSSAPI (Kerberos) | PLAIN (LDAP SASL)
+#          uri: mongodb://mongodb:pwd@ip:port/db-xx?ssl=false&authMechanism=SCRAM-SHA-1
       uri: mongodb://mongodb:123456@172.20.38.93:27017/tpc-vehicle-status?ssl=false&authMechanism=SCRAM-SHA-1
-  #   if set uri these following properties can't set
-  #      uri: mongodb://mongodb:123456@ip:port/db-xx?ssl=false&authMechanism=SCRAM-SHA-1
-  #      host: ip
-  #      port: port
-  #      username: xxx
-  #      password: xxx
-  #      database: db-xx
-  #      authenticationDatabase: db-xx
+#     if set uri these following properties can't set
+#        uri: mongodb://mongodb:123456@ip:port/db-xx?ssl=false&authMechanism=SCRAM-SHA-1
+#        host: ip
+#        port: port
+#        username: xxx
+#        password: xxx
+#        database: db-xx
+#        authenticationDatabase: db-xx
   datasource:
-#    url: jdbc:mysql://localhost:3306/admin-portal?useUnicode=true&characterEncoding=utf8
-#    username: root
-#    password: Root#123
-    url: jdbc:mysql://172.20.38.91:3306/IOV-41X?useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/admin-portal?useUnicode=true&characterEncoding=utf8
     username: root
-    password: tima123
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    min-idle: 5
-    time-between-eviction-runs-millis: 60000
-    idle-timeout: 30000
-    validation-query: SELECT 1
-    validation-interval: 30000
-    test-while-idle: true
+    password: Root#123
+#    url: jdbc:mysql://172.20.38.91:3306/IOV-41X?useUnicode=true&characterEncoding=utf8
+#    username: root
+#    password: tima123
+#    min-idle: 5
+#    time-between-eviction-runs-millis: 60000
+#    idle-timeout: 30000
+#    validation-query: SELECT 1
+#    validation-interval: 30000
+#    test-while-idle: true
   jpa:
     show-sql: true
     hibernate:
@@ -59,7 +59,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
-        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        current_session_context_class: org.springframework.orm.hibernate4.SpringSessionContext
 
 logging:
    level:
