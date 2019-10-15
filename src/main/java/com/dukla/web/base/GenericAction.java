@@ -4,7 +4,7 @@ import com.dukla.base.jpa.handler.HibernateHandler;
 import com.dukla.base.mongodb.handler.MongodbHandler;
 import com.dukla.base.sql.handler.SqlHandler;
 import com.dukla.base.util.Kit;
-import com.mongodb.gridfs.GridFSFile;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -64,7 +64,7 @@ public abstract class GenericAction {
     /**
      * 保存文件到MongoDbGridFs
      */
-    protected GridFSFile saveUploadFileToGridFs(MultipartFile file) throws IOException {
+    protected ObjectId saveUploadFileToGridFs(MultipartFile file) throws IOException {
         String orgName = file.getOriginalFilename().substring(0, file.getOriginalFilename().lastIndexOf("."));
         String ext = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
         Map<String,Object> meta=new HashMap<String,Object>();

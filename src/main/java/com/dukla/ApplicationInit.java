@@ -2,7 +2,6 @@ package com.dukla;
 
 import com.dukla.base.domain.SysCodes;
 import com.dukla.base.jpa.handler.HibernateHandler;
-import com.dukla.base.mongodb.handler.MongodbHandler;
 import com.dukla.base.util.Kit;
 import com.dukla.web.base.CoreConstant;
 import org.slf4j.Logger;
@@ -28,11 +27,6 @@ public class ApplicationInit implements ApplicationListener<ApplicationReadyEven
     public void onApplicationEvent(ApplicationReadyEvent event) {
         if(event.getApplicationContext()!=null){
             HibernateHandler hibernateHandler = event.getApplicationContext().getBean(HibernateHandler.class);
-            MongodbHandler mongodbHandler = event.getApplicationContext().getBean(MongodbHandler.class);
-
-            hibernateHandler.registerDaoMap(event.getApplicationContext());
-            mongodbHandler.registerDaoMap(event.getApplicationContext());
-
             //加载系统参数
             Map<String,String> orderProps=new HashMap<>();
             orderProps.put("codeOrder", "asc");
