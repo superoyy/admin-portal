@@ -1,4 +1,4 @@
-# admin-portal
+# admin-portal base springboot 1.5.3
 ## base-db init script
 
 SET NAMES utf8mb4;
