@@ -40,12 +40,12 @@ spring:
 #        authenticationDatabase: db-xx
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.20.38.91:3306/IOV-41X?useUnicode=true&characterEncoding=utf8
-    username: root
-    password: tima123
 #    url: jdbc:mysql://172.20.38.91:3306/IOV-41X?useUnicode=true&characterEncoding=utf8
 #    username: root
 #    password: tima123
+    url: jdbc:mysql://localhost:3306/admin-portal?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: Root#123
 #    min-idle: 5
 #    time-between-eviction-runs-millis: 60000
 #    idle-timeout: 30000
